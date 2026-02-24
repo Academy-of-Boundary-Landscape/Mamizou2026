@@ -12,7 +12,7 @@ export default defineConfig({
     vueDevTools(),
     UnoCSS(),
   ],
-  base: '/Mamizou2026/',
+  base: '/',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
