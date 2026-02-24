@@ -1,6 +1,7 @@
 # 2026 二岩猯藏接力展示网站
 
-一个用于展示「二岩猯藏角色日 24h 接力」作品的前端站点。  
+一个用于展示「二岩猯藏角色日 24h 接力」作品的前端站点。 
+**主站链接**: https://mamizou2026.secret-sealing.club/
 主要功能：作品展示、时间轴浏览、作者跳转与活动信息归档。
 
 过年期间闲的没事快速滑铲的，希望能让大家开心。
@@ -10,6 +11,10 @@
 [堇子日接力]https://sumireko2026.secret-sealing.club/
 [社团官网]https://abl.secret-sealing.club/
 [蓬莱日接力]https://hourai2025.secret-sealing.club/
+
+## 关于网站部署
+
+我们的网站因为是纯静态的，不需要写后端，所以它被挂到了github pages上面，为了让图片资源加载更快我还配置了一下CDN.
 
 ## 快速开始
 
