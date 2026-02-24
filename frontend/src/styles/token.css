@@ -1,0 +1,55 @@
+/* src/styles/tokens.css */
+:root {
+  /* ===== Brand palette (Mamizou brown + light paper) ===== */
+  --mz-primary: #85615a;        /* 主棕（按钮/高亮） */
+  --mz-primary-hover: #99706a;  /* 悬停 */
+  --mz-primary-pressed: #6d483f;/* 按下/强调更深 */
+  --mz-primary-soft: #c7a8a0;   /* 柔和棕（tag/浅背景） */
+
+  --mz-bg: #efe3df;       /* 更像浅棕纸 */
+  --mz-bg-soft: #e7d7d2;  /* 你 Hero Patterns 示例里的底色 */
+  --mz-card: #fffaf8;     /* 卡片也别太白，略暖 一点 */
+  --mz-border: #e7d7d2;         /* 边框线 */
+
+  --mz-text: #2a2222;           /* 主文字（深褐黑） */
+  --mz-text-2: #5a4b49;         /* 次文字 */
+  --mz-text-3: #8b7a77;         /* 弱文字 */
+
+  /* 点睛色 */
+  --mz-seal-red: #c2412d;       /* 朱印红（印章/徽章点睛） */
+  --mz-gold: #d2a85a;           /* 金色（灯影点睛，极少量） */
+
+  /* 阴影系统 */
+  --mz-shadow: 0 10px 30px rgba(76, 45, 36, 0.12);
+  --mz-shadow-sm: 0 4px 12px rgba(76, 45, 36, 0.08);
+  --mz-shadow-hover: 0 14px 40px rgba(76, 45, 36, 0.18);
+
+  /* 圆角统一 */
+  --mz-radius: 14px;
+  --mz-radius-sm: 10px;
+  --mz-radius-lg: 18px;
+
+  /* 字体 */
+  --mz-font-serif: 'Noto Serif SC', 'Source Han Serif SC', 'Source Han Serif CN', Georgia, 'Times New Roman', serif;
+  --mz-font-sans: 'Noto Sans SC', 'Source Han Sans SC', 'Source Han Sans CN', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+html, body, #app {
+  height: 100%;
+}
+body {
+  margin: 0;
+  color: var(--mz-text);
+  background: var(--mz-bg);
+}
+a {
+  color: var(--mz-primary);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--mz-primary-hover);
+}
+
+* {
+  box-sizing: border-box;
+}

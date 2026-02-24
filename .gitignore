@@ -1,0 +1,55 @@
+# =========================
+# Dependencies
+# =========================
+frontend/node_modules/
+
+# =========================
+# Build outputs
+# =========================
+frontend/dist/
+frontend/.vite/
+frontend/coverage/
+
+# =========================
+# Logs
+# =========================
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# Environment files
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Cache / temp
+# =========================
+*.tsbuildinfo
+.cache/
+.temp/
+tmp/
+
+# =========================
+# OS / Editor
+# =========================
+.DS_Store
+Thumbs.db
+
+.idea/
+*.swp
+*.swo
+
+# VS Code (keep recommended shared settings if you add them later)
+frontend/.vscode/*
+!frontend/.vscode/extensions.json
+!frontend/.vscode/settings.json
+!frontend/.vscode/tasks.json
+!frontend/.vscode/launch.json
+
+project.md
+target.md
