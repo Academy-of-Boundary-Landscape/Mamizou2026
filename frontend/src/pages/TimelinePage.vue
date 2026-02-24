@@ -333,7 +333,9 @@ onBeforeUnmount(() => {
           </div>
           <div class="hero-actions toolbar">
             <NButton type="primary" round @click="centerNowTick">回到今夜此刻</NButton>
-            <NButton round @click="$router.push('/')">回作品墙</NButton>
+            <RouterLink to="/">
+              <NButton round>回作品墙</NButton>
+            </RouterLink>
           </div>
         </div>
 
@@ -446,9 +448,9 @@ onBeforeUnmount(() => {
 
                       <div class="work-actions">
                         <button type="button" class="b-open-link" @click="openWork(w.url)">B站打开↗</button>
-                        <NButton size="tiny" class="detail-stamp-btn" @click="$router.push(`/work/${w.id}`)">
-                          详情
-                        </NButton>
+                        <RouterLink :to="`/work/${w.id}`">
+                          <NButton size="tiny" class="detail-stamp-btn">详情</NButton>
+                        </RouterLink>
                       </div>
                     </div>
                   </div>

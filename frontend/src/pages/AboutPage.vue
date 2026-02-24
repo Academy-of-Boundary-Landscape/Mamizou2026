@@ -125,8 +125,12 @@ const maintainerUrl = computed(() => {
             </p>
           </div>
           <div class="hero-actions toolbar">
-            <NButton type="primary" round @click="$router.push('/')">回作品墙</NButton>
-            <NButton round @click="$router.push('/timeline')">去时间轴</NButton>
+            <RouterLink to="/">
+              <NButton type="primary" round>回作品墙</NButton>
+            </RouterLink>
+            <RouterLink to="/timeline">
+              <NButton round>去时间轴</NButton>
+            </RouterLink>
           </div>
         </div>
       </section>

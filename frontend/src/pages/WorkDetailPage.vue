@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 import {
   NAlert,
   NButton,
@@ -18,7 +18,6 @@ import { useSiteData } from '@/composables/useSiteData'
 type RenderMode = 'text' | 'visual' | 'embed'
 
 const route = useRoute()
-const router = useRouter()
 const headerSearch = ref('')
 
 const { works, getCreator } = useSiteData()
@@ -268,8 +267,12 @@ const prevNext = computed(() => {
                   </template>
                   在 B 站打开
                 </NButton>
-                <NButton round @click="$router.push('/timeline')">时间轴</NButton>
-                <NButton round @click="$router.push('/')">作品墙</NButton>
+                <RouterLink to="/timeline">
+                  <NButton round>时间轴</NButton>
+                </RouterLink>
+                <RouterLink to="/">
+                  <NButton round>作品墙</NButton>
+                </RouterLink>
               </div>
             </div>
           </div>
@@ -347,15 +350,21 @@ const prevNext = computed(() => {
         <!-- 上一棒 / 下一棒 接力导航 -->
         <section class="relay-nav mt-6">
           <div class="relay-nav-inner">
-            <button
-              class="relay-btn relay-prev"
-              :disabled="!prevNext.prev"
-              @click="prevNext.prev && router.push(`/work/${prevNext.prev.id}`)"
+            <RouterLink
+              v-if="prevNext.prev"
+              :to="`/work/${prevNext.prev.id}`"
+              class="relay-btn relay-prev relay-link"
             >
               <ChevronLeft :size="18" />
               <div class="relay-btn-content">
                 <span class="relay-label">上一棒</span>
-                <span v-if="prevNext.prev" class="relay-title">{{ prevNext.prev.title }}</span>
+                <span class="relay-title">{{ prevNext.prev.title }}</span>
+              </div>
+            </RouterLink>
+            <button v-else class="relay-btn relay-prev" :disabled="true">
+              <ChevronLeft :size="18" />
+              <div class="relay-btn-content">
+                <span class="relay-label">上一棒</span>
               </div>
             </button>
 
@@ -363,14 +372,20 @@ const prevNext = computed(() => {
               <span class="stamp-primary">接力</span>
             </div>
 
-            <button
-              class="relay-btn relay-next"
-              :disabled="!prevNext.next"
-              @click="prevNext.next && router.push(`/work/${prevNext.next.id}`)"
+            <RouterLink
+              v-if="prevNext.next"
+              :to="`/work/${prevNext.next.id}`"
+              class="relay-btn relay-next relay-link"
             >
               <div class="relay-btn-content">
                 <span class="relay-label">下一棒</span>
-                <span v-if="prevNext.next" class="relay-title">{{ prevNext.next.title }}</span>
+                <span class="relay-title">{{ prevNext.next.title }}</span>
+              </div>
+              <ChevronRight :size="18" />
+            </RouterLink>
+            <button v-else class="relay-btn relay-next" :disabled="true">
+              <div class="relay-btn-content">
+                <span class="relay-label">下一棒</span>
               </div>
               <ChevronRight :size="18" />
             </button>
@@ -385,9 +400,9 @@ const prevNext = computed(() => {
           <div class="empty-title">没有找到这个作品</div>
           <p class="empty-desc">可能是链接错误，或者数据里还没录入。</p>
           <div class="mt-6">
-            <NButton type="primary" round @click="$router.push('/')">
-              返回作品墙
-            </NButton>
+            <RouterLink to="/">
+              <NButton type="primary" round>返回作品墙</NButton>
+            </RouterLink>
           </div>
         </section>
       </template>
@@ -654,6 +669,10 @@ const prevNext = computed(() => {
   cursor: pointer;
   transition: all 0.2s ease;
   text-align: left;
+}
+
+.relay-link {
+  text-decoration: none;
 }
 
 .relay-btn:hover:not(:disabled) {

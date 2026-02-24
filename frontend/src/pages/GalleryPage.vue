@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { NButton, NSelect } from 'naive-ui'
 import SiteHeader from '@/components/common/SiteHeader.vue'
 import SiteFooter from '@/components/common/SiteFooter.vue'
@@ -11,6 +12,7 @@ type WorkTypeFilter = Work['type'] | 'all'
 const search = ref('')
 const typeFilter = ref<WorkTypeFilter>('all')
 const { works } = useSiteData()
+const router = useRouter()
 
 const typeOptions = [
   { label: '全部类型', value: 'all' },
@@ -98,7 +100,7 @@ function openWork(url: string) {
 }
 
 function goToDetail(id: string) {
-  window.location.href = `/work/${id}`
+  router.push(`/work/${id}`)
 }
 
 function scrollToSection(id: string) {
@@ -139,12 +141,16 @@ function scrollToTop() {
             </p>
 
             <div class="hero-actions">
-              <NButton type="primary" round @click="$router.push('/timeline')">
-                去时间轴
-              </NButton>
-              <NButton round @click="$router.push('/about')">
-                关于活动
-              </NButton>
+              <RouterLink to="/timeline">
+                <NButton type="primary" round>
+                  去时间轴
+                </NButton>
+              </RouterLink>
+              <RouterLink to="/about">
+                <NButton round>
+                  关于活动
+                </NButton>
+              </RouterLink>
             </div>
 
             <div class="hero-stats">
@@ -277,7 +283,7 @@ function scrollToTop() {
 
     <!-- 浮动快捷按钮 -->
     <div class="floating-actions" aria-label="页面快捷操作">
-      <button class="float-btn" @click="$router.push('/timeline')">时间轴</button>
+      <RouterLink to="/timeline" class="float-btn float-link">时间轴</RouterLink>
       <button class="float-btn" @click="scrollToTop">顶部</button>
     </div>
 
@@ -750,6 +756,14 @@ function scrollToTop() {
   cursor: pointer;
   box-shadow: 0 6px 14px rgba(45, 27, 19, 0.08);
 }
+
+.float-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
 .float-btn:hover {
   color: var(--mz-text);
   border-color: color-mix(in srgb, var(--mz-seal-red) 24%, var(--mz-border));
